@@ -68,19 +68,18 @@ Product.propTypes = {
 const ProductWrapper = styled.div`
   .card {
     border-color: transparent;
-    transition: all 1s linear;
-
-
+    transition: all 0.2s ease-in;
   }
   .card-footer {
     background: transparent;
     border-top: transparent;
-    transition: all 1s linear;
+    transition: all 0.2s ease-in;
   }
   &:hover {
     .card {
-      border: 0.2rem solid rgba(0,0,0,0.2);
-      //box-shadow: 1px 1px 1px 5px rgba(0,0,0,0.2);
+      -webkit-box-shadow: -2px 10px 38px -15px rgba(26,18,71,1);
+      -moz-box-shadow: -2px 10px 38px -15px rgba(26,18,71,1);
+      box-shadow: -2px 10px 38px -15px rgba(26,18,71,1);
     }
     .card-footer {
       background: rgba(247,247,247);
@@ -92,7 +91,7 @@ const ProductWrapper = styled.div`
     overflow: hidden;
   }
   .card-img-top {
-    transition: all 1s linear;
+    transition: all 0.5s linear;
   }
   .img-container:hover .card-img-top{
     transform: scale(1.2);
@@ -111,7 +110,7 @@ const ProductWrapper = styled.div`
   }
   .img-container:hover .card-btn{
     transform: translate(0,0);
-    transition: all 1s linear;
+    transition: all 0.4s ease-in;
   }
   .card-btn:hover {
     color: var(--mainBlue);

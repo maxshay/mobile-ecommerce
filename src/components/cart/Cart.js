@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Title from '../Title';
 import CartColumns from './CartColumns.js';
 import EmptyCart from './EmptyCart.js';
-import {ProductConsumer} from '../../context';
+import { ProductConsumer } from '../../context';
 import CartList from './CartList.js';
 import CartTotals from './CartTotals.js';
 
