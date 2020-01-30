@@ -5,6 +5,8 @@ const ProductContext = React.createContext();
 class ProductProvider extends Component {
     state = {
         products: [],
+        propertyListings: [],
+        filter: {},
         detailProduct: detailProduct,
         cart: [],
         modalOpen: false,
@@ -156,10 +158,50 @@ class ProductProvider extends Component {
             }
         })
     }
+
+    // filter 
+
+    updateFilter = filter => {
+        this.setState({
+            filter
+        })
+    }
+
+
+
+    static applyFilter(products, filter) {
+        const { companyFilter, colorFilter } = filter;
+        let filteredProducts = products;
+        if (companyFilter && colorFilter && companyFilter.length === 0 && colorFilter.length === 0) {
+
+            return products;
+        }
+
+        if (companyFilter && companyFilter.length > 0) {
+            filteredProducts = filteredProducts.filter(item => companyFilter.includes(item.company))
+        }
+
+        if (colorFilter && colorFilter.length > 0) {
+            filteredProducts = filteredProducts.filter(item => colorFilter.includes(item.color))
+        }
+
+
+
+        return filteredProducts;
+    }
+
     render() {
+
+    const filteredProducts = ProductProvider.applyFilter(
+        this.state.products,
+        this.state.filter
+    )
+
         return (
             <ProductContext.Provider value={{
                 ...this.state,
+                filteredProducts: filteredProducts,
+                updateFilter: this.updateFilter,
                 handleDetail: this.handleDetail,
                 addToCart: this.addToCart,
                 openModal: this.openModal,

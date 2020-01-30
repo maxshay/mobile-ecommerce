@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
-import {ProductConsumer} from '../context';
+import { Link } from 'react-router-dom';
+import { ProductConsumer } from '../context';
 import PropTypes from 'prop-types';
 
 export default class Product extends Component {
@@ -20,16 +20,15 @@ export default class Product extends Component {
                 <Link to='/details'>
                   <img src={img} alt="product" className="card-img-top"/>
                 </Link>
-                <button className="card-btn" 
+                <button className={`card-btn ${inCart ? ' already-in-cart' : null}`} 
                         disabled={inCart ? true : false}
                         onClick={() => {
                           value.addToCart(id);
                           value.openModal(id);
                   }}
                 >
-                {inCart ? (<p className="text-capitalize mb-0" disabled>
-                            {" "}
-                            in cart
+                {inCart ? (<p className="text-capitalize mb-0 already-in-cart">
+                            added
                           </p>): <i className="fas fa-cart-plus"></i>}
                 </button>
               </div>
@@ -67,23 +66,28 @@ Product.propTypes = {
 
 const ProductWrapper = styled.div`
   .card {
-    border-color: transparent;
+    border-color: transparent
     transition: all 0.2s ease-in;
+  }
+  .already-in-cart {
+    font-size: 0.75rem;
+    color: #c3c3c3;
+  }
+  .already-in-cart:hover {
+    cursor: default !important;
   }
   .card-footer {
     background: transparent;
-    border-top: transparent;
+    border: transparent;
     transition: all 0.2s ease-in;
   }
   &:hover {
     .card {
-      -webkit-box-shadow: -2px 10px 38px -15px rgba(26,18,71,1);
-      -moz-box-shadow: -2px 10px 38px -15px rgba(26,18,71,1);
-      box-shadow: -2px 10px 38px -15px rgba(26,18,71,1);
+      -webkit-box-shadow: 2px 6px 23px -13px rgba(92,92,92,1);
+      -moz-box-shadow: 2px 6px 23px -13px rgba(92,92,92,1);
+      box-shadow: 2px 6px 23px -13px rgba(92,92,92,1);
     }
-    .card-footer {
-      background: rgba(247,247,247);
-    }
+
     
   }
   .img-container {
@@ -91,7 +95,7 @@ const ProductWrapper = styled.div`
     overflow: hidden;
   }
   .card-img-top {
-    transition: all 0.5s linear;
+    transition: all 0.1s linear;
   }
   .img-container:hover .card-img-top{
     transform: scale(1.2);
@@ -100,20 +104,22 @@ const ProductWrapper = styled.div`
     position:absolute;
     bottom: 0;
     right: 0;
-    padding: 0.2rem 0.4rem;
-    background: var(--lightBlue);
+    padding: 0.2rem 1rem;
     border: none;
-    color: var(--mainWhite);
+    color: #c3c3c3;
     font-size: 1.4rem;
     border-radius: 0.5rem 0 0 0;
     transform: translate(100%, 100%);
   }
   .img-container:hover .card-btn{
     transform: translate(0,0);
-    transition: all 0.4s ease-in;
+    transition: all 0.1s ease-in;
   }
   .card-btn:hover {
     color: var(--mainBlue);
     cursor: pointer;
+  }
+  .card-btn:focus {
+    outline: none;
   }
 `;

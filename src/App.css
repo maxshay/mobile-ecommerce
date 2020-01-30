@@ -1,25 +1,25 @@
-@import url('https://fonts.googleapis.com/css?family=Arvo:400,700|PT+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
 
 :root {
   --mainBlue:#2a2a72;
   --lightBlue:#009ffd;
-  --mainWhite:#f3f3f3;
+  --mainWhite:#f9f9f9;
   --mainDark:#232528;
   --mainYellow:#ffa400;
 }
 
 body {
-  font-family: 'PT Sans', sans-serif !important;
+  font-family: "Noto Sans", serif !important;
   background: var(--mainWhite) !important;
   color: var(--mainDark) !important;
 }
 
 .text-title {
-  font-family: 'Arvo', serif;
+  font-family: 'Noto Sans', serif;
 }
 
 .navbar-nav li {
-  font-family: "Arvo", serif;
+  font-family: "Noto Sans", serif;
   font-weight: 700;
   font-size: 1.2em;
   text-transform: capitalize;
@@ -60,15 +60,53 @@ body {
 .btn-signin {
   padding:  10px 40px;
   margin-top: 20px;
-  background-color: #219c21;
+  background-color: var(--lightBlue);
+  color: white;
+  border-radius: 3px;
 }
 
 .btn-signin:hover {
-  background-color: #219c21d1;
+  background-color: #009ffdc9;
   cursor: pointer;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-signin:focus {
   outline: none;
+}
+
+.extra-btn-modal {
+  padding: 10px 20px !important;
+}
+
+.extra-btn-modal:hover {
+  color: white !important;
+}
+
+.no-border {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.no-border:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.form-check > label:hover {
+  cursor: pointer
+}
+
+.custom-selector:hover {
+  cursor: pointer;
+}
+
+.custom-dropdown-btns {
+  background-color: rgba(101, 99, 99, 0.06);
+  border-bottom: 1px solid grey;
+}
+
+.reset-button p {
+  font-size: .75rem;
 }
